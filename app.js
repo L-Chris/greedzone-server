@@ -10,6 +10,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const mongoose = require('./mongodb')
 const interceptor = require('./middlewares/interceptor')
+const koaRedirect = require('./middlewares/koa-redirect')
 const path = require('path')
 const router = require('./routes')
 // 全局变量
@@ -51,6 +52,7 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(interceptor)
+app.use(koaRedirect)
 app.use(router.routes())
 
 module.exports = app
