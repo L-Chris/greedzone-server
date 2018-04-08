@@ -33,7 +33,9 @@ app.use(session({
   expires: 10000
 }))
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-static')(__dirname + '/public', {
+  maxage: 2592000000
+}))
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'
